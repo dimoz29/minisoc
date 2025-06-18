@@ -17,12 +17,9 @@ if st.button("Generate and Analyze Logs"):
 
         st.subheader("📊 Detection Results")
 
-        # Highlight function
         def highlight_anomalies(val):
             return 'background-color: #ffdddd' if val == 1 else ''
 
-        # Display styled DataFrame
         st.dataframe(result.style.applymap(highlight_anomalies, subset=['anomaly']))
 
         st.success("Detection complete. Red cells in the 'anomaly' column indicate suspicious events.")
-
