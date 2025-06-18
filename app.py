@@ -17,10 +17,10 @@ if st.button("Generate and Analyze Logs"):
 
         st.subheader("📊 Detection Results")
 
-        # ✅ Σωστή εσοχή εδώ:
-        def highlight_anomalies(val):
-            return 'background-color: #ffdddd' if val == 1 else ''
+        # ✅ Highlight whole row if anomaly == 1
+        def highlight_row(row):
+            return ['background-color: #ffdddd' if row['anomaly'] == 1 else '' for _ in row]
 
-        st.dataframe(result.style.applymap(highlight_anomalies, subset=['anomaly']))
+        st.dataframe(result.style.apply(highlight_row, axis=1))
 
-        st.success("Detection complete. Red cells in the 'anomaly' column indicate suspicious events.")
+        st.success("Detection complete. Red rows indicate anomalies.")
