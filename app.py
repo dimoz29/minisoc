@@ -14,8 +14,10 @@ if st.button("Generate and Analyze Logs"):
         result = detect_anomalies(df)
 
         st.subheader("📊 Detection Results")
-        st.dataframe(result.style.apply(
-            lambda x: ['background-color: #ffdddd' if v == 1 else '' for v in x.anomaly], axis=1
-        ))
+        def highlight_anomalies(val):
+    return 'background-color: #ffdddd' if val == 1 else ''
+
+st.dataframe(result.style.applymap(highlight_anomalies, subset=['anomaly']))
+
 
         st.success("Detection complete. Red rows indicate anomalies.")
