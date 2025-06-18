@@ -17,6 +17,7 @@ if st.button("Generate and Analyze Logs"):
 
         st.subheader("📊 Detection Results")
 
+        # ✅ Σωστή εσοχή εδώ:
         def highlight_anomalies(val):
             return 'background-color: #ffdddd' if val == 1 else ''
 
